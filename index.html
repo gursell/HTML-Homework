@@ -4,29 +4,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="spelStill.css" />
+  <title>Tre i rad</title>
+  <link rel="stylesheet" href="spelStill.css">
+  <script src="spel.js" defer></script>
 </head>
 
 <body>
-  <h1>Tre i Rad</h1>
-  <h2 id="player"></h2>
-  <div class="game-container">
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
-    <div class="block"></div>
+  <h3 id="rond-text">Rond: 0</h3>
+  <div class="board" id="board">
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
+    <div class="cell" data-cell></div>
   </div>
-  <p id="error"></p>
-  <button id="register">Register</button>
-
-
-  <script src="users.js"></script>
+  <div class="winning-message" id="winning-message">
+    <div data-winning-message-text></div>
+    <button id="restart-button">Restart</button>
+    <button id="main-button">Back to main page</button>
+  </div>
 </body>
 
 </html>
+
+
