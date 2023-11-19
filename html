@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Add your CSS styles here */
+    /* ... */
+  </style>
+  <title>Tic Tac Toe</title>
+</head>
+
+<body>
+
+  <!-- Registration Page -->
+  <section id="register">
+    <h2>Register New User</h2>
+    <form id="registrationForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required>
+      <button type="submit">Register</button>
+    </form>
+  </section>
+
+  <!-- Player Selection Page -->
+  <section id="selectPlayers" style="display: none;">
+    <h2>Select Players</h2>
+    <label for="player1">Player 1:</label>
+    <select id="player1"></select>
+
+    <label for="player2">Player 2:</label>
+    <select id="player2"></select>
+
+    <button onclick="startGame()">Start Game</button>
+  </section>
+
+  <!-- Game Page -->
+  <section id="game" style="display: none;">
+    <h2>Tic Tac Toe</h2>
+    <div id="board"></div>
+    <div id="message"></div>
+    <button onclick="resetGame()">Reset Game</button>
+  </section>
+
+  <!-- View Users Page -->
+  <section id="viewUsers" style="display: none;">
+    <h2>View Users</h2>
+    <ul id="userList"></ul>
+  </section>
+
+  <script>
+    // JavaScript code goes here
+
+    // Sample user data structure
+    const users = [];
+
+    // Function to populate user dropdowns
+    function populateUserDropdowns() {
+      const player1Dropdown = document.getElementById('player1');
+      const player2Dropdown = document.getElementById('player2');
+
+      users.forEach(user => {
+        const option1 = document.createElement('option');
+        const option2 = document.createElement('option');
+        option1.value = user.id;
+        option2.value = user.id;
+        option1.textContent = user.username;
+        option2.textContent = user.username;
+        player1Dropdown.appendChild(option1);
+        player2Dropdown.appendChild(option2);
+      });
+    }
+
+    // Function to display registered users
+    function displayUsers() {
+      const userList = document.getElementById('userList');
+      userList.innerHTML = '';
+      users.forEach(user => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${user.username} - Matches: ${user.matchHistory.length}`;
+        userList.appendChild(listItem);
+      });
+    }
+
+    // Function to start the game
+    function startGame() {
+      // Implement game initialization logic here
+      const selectedPlayer1 = document.getElementById('player1').value;
+      const selectedPlayer2 = document.getElementById('player2').value;
+
+      // Display game board and relevant information
+      document.getElementById('selectPlayers').style.display = 'none';
+      document.getElementById('game').style.display = 'block';
+    }
+
+    // Function to reset the game
+    function resetGame() {
+      // Implement game reset logic here
+      document.getElementById('game').style.display = 'none';
+      document.getElementById('selectPlayers').style.display = 'block';
+    }
+
+    // Event listener for user registration form
+    document.getElementById('registrationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const newUser = { id: users.length + 1, username, matchHistory: [] };
+      users.push(newUser);
+      populateUserDropdowns();
+      displayUsers();
+      document.getElementById('username').value = '';
+      document.getElementById('selectPlayers').style.display = 'block';
+      document.getElementById('register').style.display = 'none';
+    });
+
+    // Initial setup
+    populateUserDropdowns();
+    displayUsers();
+  </script>
+
+</body>
+
+</html>
