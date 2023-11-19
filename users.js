@@ -25,7 +25,7 @@ function register() {
 
 function fetchData() {
   console.log('2')
-  const jsonSting = fs.readFileSync("playerList.json");
+  const jsonSting = fs.readFileSync("toppLista.json");
   const data = JSON.parse(jsonSting)
 
   for (let i = 0; i < data.lengt; i++) {
@@ -43,7 +43,7 @@ function checkForNameExist(name) {
 
 
 function writeToJson() {
-  fs.writeFileSync('./playerList.json', JSON.stringify(playerArray, null, 2), (err) => {
+  fs.writeFileSync('./toppLista.json', JSON.stringify(playerArray, null, 2), (err) => {
     if (err) throw err;
     console.log('data writen to file')
   })
